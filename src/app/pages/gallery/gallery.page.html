@@ -1,0 +1,40 @@
+<!---- Este código muestra la galería principal con tarjetas de items. 
+Cada tarjeta contiene nombre, imagen e información, 
+y permite abrir un modal con más detalles del item. ---->
+
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button> <!---- Abre el menú lateral ---->
+    </ion-buttons>
+    <ion-title>Lore & Galería</ion-title> <!---- Título de la página ---->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="gallery-container">
+    <h1>| Gallery |  <br>| 9 VIDAS  |</h1>
+
+    <div class="cards-grid">
+      <!---- Recorre los elementos del observable galleryItems$ y crea una tarjeta por cada uno ---->
+      <div *ngFor="let item of galleryItems$ | async" class="pixel-card">
+        
+        <div class="card-header">
+          {{ item.nombre | uppercase }} <!---- Muestra el nombre en mayúsculas ---->
+        </div>
+        
+        <img [src]="item.imagen" [alt]="item.nombre" class="card-image"> <!---- Imagen del item ---->
+
+        <div class="card-content">
+          <h2>{{ item.nombre }}</h2>
+          <p>{{ item.info }}</p> <!---- Breve descripción del item ---->
+        </div>
+
+        <div class="card-footer">
+          <!---- Abre un modal con la información detallada del item ---->
+          <button class="pixel-button" (click)="openDetailModal(item)">Ver Detalles</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,69 @@
+<!-- Formulario de soporte/contacto — envía reportes o sugerencias al equipo */ --->
+
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button> <!-- Botón para abrir el menú lateral -->
+    </ion-buttons>
+    <ion-title>Soporte/Contacto</ion-title> <!-- Título de la página -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <div class="pixel-panel form-panel">
+    <p class="intro-text">
+      <!-- Texto introductorio explicando el propósito del formulario -->
+      ¿Encontraste un bug o tienes una sugerencia? Llena el formulario.
+    </p>
+
+    <!-- Formulario vinculado al FormGroup 'contactForm' -->
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+      <!-- Campo: nombre del usuario -->
+      <div class="form-group">
+        <label for="name">Tu Nombre:</label>
+        <input id="name" type="text" formControlName="name" placeholder="Ej: Naranjoso Pixel">
+        <div *ngIf="isInvalid('name')" class="error-message">El nombre es obligatorio.</div>
+      </div>
+
+      <!-- Campo: correo electrónico -->
+      <div class="form-group">
+        <label for="email">Tu Correo Electrónico:</label>
+        <input id="email" type="email" formControlName="email" placeholder="ejemplo@dominio.com">
+        <!-- Validaciones de correo -->
+    <!--  contactForm.get('email') → accede al control del formulario llamado email.
+          ?. → evita errores si el control no existe (operador de encadenamiento opcional).
+          hasError('required') → verifica si el campo tiene el error de tipo “requerido” (está vacío).
+          touched → indica que el usuario ya interactuó con el campo (por ejemplo, hizo clic o salió del input).
+          *ngIf="..." → muestra el <div> solo si la condición es verdadera.
+    -->
+        <div *ngIf="contactForm.get('email')?.hasError('required') && contactForm.get('email')?.touched" class="error-message">
+          El correo electrónico es obligatorio.
+        </div>
+        <div *ngIf="contactForm.get('email')?.hasError('email')" class="error-message">
+          Formato inválido.
+        </div>
+      </div>
+
+      <!-- Campo: descripción del problema -->
+      <div class="form-group">
+        <label for="problem">Detalle del Problema y/ó sugerencias:</label>
+        <textarea id="problem" formControlName="problem" rows="6" placeholder="Describe el error..."></textarea>
+        <div *ngIf="isInvalid('problem')" class="error-message">
+          Se requiere una descripción detallada.
+        </div>
+      </div>
+
+      <!-- Botón de envío -->
+      <div class="submit-group">
+        <button type="submit" class="pixel-button submit-button" [disabled]="contactForm.invalid || isSubmitting">
+          {{ isSubmitting ? 'ENVIANDO...' : 'ENVIAR REPORTE' }} <!-- Cambia texto según estado -->
+          <!--isSubmitting es una variable booleana de contact.page.ts que cmabia dependiendo el estado-->
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+</ion-content>

@@ -1,0 +1,92 @@
+
+.contact-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.contact-container h1 {
+  color: #ff9900;
+  margin-bottom: 30px;
+}
+
+.form-panel {
+  max-width: 700px;
+  margin: 0 auto; 
+  text-align: left; 
+}
+
+.intro-text {
+  color: #ccc;
+  margin-bottom: 25px;
+  border-bottom: 2px dashed #4a4a58;
+  padding-bottom: 20px;
+  text-align: justify;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #ffc72c; 
+}
+
+input[type="text"], input[type="email"], textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.error-message {
+  color: #ff4d4d;
+  font-size: 0.8em;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.submit-group {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.submit-button {
+  width: 100%;
+  font-size: 1.2em;
+}
+
+.submit-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #4a4a58;
+    color: #ccc;
+}
+.form-group label {
+  font-family: 'VT323', Courier, monospace !important;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #D97D55;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  font-family: 'VT323', Courier, monospace !important;
+  font-size: 1.4em;
+  color: #fff;
+  padding: 10px;
+}
+
+.intro-text {
+  font-family: 'VT323', Courier, monospace !important;
+  font-size: 1.6em;
+  line-height: 1.4;
+  color: #ccc;
+}
+
+.error-message {
+  font-family: 'VT323', Courier, monospace !important;
+  font-size: 1.3em;
+  font-weight: bold;
+}

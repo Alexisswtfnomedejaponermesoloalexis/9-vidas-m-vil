@@ -1,0 +1,117 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    
+    <ion-title>Calificaciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <div class="ratings-container">
+    <h1>CALIFICA NUESTROS ESCENARIOS</h1>
+
+    <div class="pixel-panel form-panel">
+      
+      <form [formGroup]="ratingForm" (ngSubmit)="onSubmit()">
+
+        <!-- Escenario  -->
+        <div class="form-group">
+          <label for="scenario">Escenario y Dificultad</label>
+          <select id="scenario" formControlName="scenario">
+            <option *ngFor="let s of scenarios" [value]="s">{{ s }}</option>
+          </select>
+        </div>
+
+        <!-- Estrellas  -->
+        <div class="form-group rating-stars-group">
+          <label>Valoración</label>
+          <div class="stars-wrapper">
+            <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+              <span 
+                class="star" 
+                [style.color]="getStarColor(star)"
+                (click)="setRating(star)" 
+                (mouseenter)="starEnter(star)" 
+                (mouseleave)="starLeave()"
+              >
+                ★
+              </span>
+            </ng-container>
+          </div>
+          <!-- Mensaje de error  -->
+          <div *ngIf="ratingForm.get('rating')?.invalid && ratingForm.get('rating')?.touched" class="error-message">
+            Por favor, selecciona una calificación.
+          </div>
+        </div>
+
+        <!-- Comentarios  -->
+        <div class="form-group">
+          <label for="comment">Comentarios</label>
+          <textarea id="comment" formControlName="comment" rows="4" placeholder="¿Qué te pareció este escenario?"></textarea>
+          <!-- Mensajes de error  -->
+          <div *ngIf="ratingForm.get('comment')?.hasError('required') && ratingForm.get('comment')?.touched" class="error-message">
+            El comentario es obligatorio.
+          </div>
+          <div *ngIf="ratingForm.get('comment')?.hasError('minlength')" class="error-message">
+            El comentario debe tener al menos 10 caracteres.
+          </div>
+        </div>
+
+        <!-- Adjuntar Imagen (Simulado) -->
+        <div class="form-group">
+          <label>Adjuntar Imagen</label>
+          <div class="file-upload-wrapper">
+            <input 
+              type="file" 
+              id="imageFile" 
+              accept="image/*" 
+              (change)="onFileSelected($event)" 
+              style="display: none;"
+            >
+            <label for="imageFile" class="pixel-button file-button">
+              Adjuntar Imagen
+            </label>
+            <span class="file-name">{{ selectedFileName }}</span>
+          </div>
+        </div>
+
+        <!-- Nota de Voz (Botón) -->
+        <div class="form-group">
+          <label>Nota de Voz</label>
+          <button 
+            type="button" 
+            class="pixel-button audio-button" 
+            (click)="toggleRecording()"
+            [ngClass]="{'recording': isRecording}"
+          >
+            {{ isRecording ? 'Detener Grabación' : 'Grabar Nota de Voz' }}
+            <!-- isRecording variable de estado-->
+          </button>
+          
+        </div>
+        
+        <!-- 
+           Reproductor de Audio
+          *ngIf="hasRecording" = Solo se muestra si hay una grabación terminada.
+          [src]="audioUrl"    = Enlaza la URL segura de la grabación al reproductor.
+        -->
+        <div *ngIf="hasRecording" class="audio-player-wrapper form-group">
+          <label>Pre-escucha:</label>
+          <audio [src]="audioUrl" controls></audio>
+        </div>
+        
+        <!-- Botón de Envío  -->
+        <div class="submit-group">
+          <button type="submit" class="pixel-button submit-button" [disabled]="ratingForm.invalid">
+            ENVIAR CALIFICACIÓN
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</ion-content>

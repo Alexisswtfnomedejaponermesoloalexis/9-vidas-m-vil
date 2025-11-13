@@ -1,0 +1,98 @@
+
+.ratings-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.ratings-container h1 {
+  color: #ff9900;
+  margin-bottom: 30px;
+}
+
+.form-panel {
+  max-width: 600px;
+  margin: 0 auto; 
+  text-align: left; 
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #ffc72c; 
+}
+
+select, textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.rating-stars-group .stars-wrapper {
+  font-size: 36px;
+  cursor: pointer;
+  letter-spacing: 5px;
+  user-select: none; 
+}
+
+.star {
+
+  transition: color 0.1s;
+}
+
+
+
+.file-upload-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.file-button {
+  padding: 5px 10px;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.file-name {
+  color: #ccc;
+  font-size: 0.9em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.audio-button.recording {
+  background-color: #c70000; 
+  border-color: #ff9900;
+  color: #fff;
+}
+
+.audio-success {
+    color: #00ff00; 
+    font-weight: bold;
+}
+
+/* --- ERRORES --- */
+.error-message {
+  color: #ff4d4d; 
+  font-size: 0.8em;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.submit-group {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.submit-button {
+  width: 100%;
+  font-size: 1.2em;
+}

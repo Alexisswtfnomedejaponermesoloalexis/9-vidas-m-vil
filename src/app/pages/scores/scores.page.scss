@@ -1,0 +1,86 @@
+/* src/app/components/scores/scores.component.css */
+
+.scores-container {
+  padding: 20px;
+  text-align: center; /* Centra elementos inline-block dentro de este contenedor */
+}
+
+/* Título y línea de división centrada */
+.scores-container h1 {
+  color: #D97D55;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  text-align: center; 
+  text-transform: uppercase;
+  position: relative; 
+}
+
+/* Línea naranja centrada debajo del título */
+.scores-container h1::after {
+  content: '';
+  display: block;
+  width: 30%; 
+  height: 4px;
+  background-color: #D97D55;
+  margin: 0 auto; 
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0; 
+}
+
+/* El panel que contiene la tabla */
+.leaderboard-panel {
+  display: inline-block; 
+  background-color: #2b2b3a; 
+  border: 4px solid #D97D55; 
+  box-shadow: 6px 6px 0px 0px #1a1a2a; 
+  padding: 10px;
+  margin-bottom: 20px; 
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse; 
+  font-size: 1.1em;
+  color: #fff;
+}
+
+/* Cabecera de la tabla */
+thead th {
+  background-color: #D97D55; 
+  color: #1a1a2a; 
+  padding: 12px 15px;
+  text-transform: uppercase;
+  border: 2px solid #1a1a2a; 
+}
+
+/* Filas del cuerpo */
+tbody tr {
+  border-bottom: 1px dashed #4a4a58; 
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody td {
+  padding: 10px 15px;
+}
+
+/* Resaltar las primeras posiciones */
+.top-rank {
+  color: #ffc72c; 
+  font-weight: bold;
+}
+
+.rank-column {
+  width: 50px;
+}
+
+/* Estilo para la nota inferior (ya centrado) */
+.data-source-note {
+  margin-top: 0; 
+  font-size: 0.8em;
+  color: #ccc;
+}
