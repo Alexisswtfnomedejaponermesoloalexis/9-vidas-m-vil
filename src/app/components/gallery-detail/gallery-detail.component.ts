@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core'; // Importa decoradores y utili
 import { CommonModule } from '@angular/common'; // Importa funciones comunes (ngIf, ngFor, etc.)
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonButtons, ModalController } from '@ionic/angular/standalone'; 
 // Importa componentes de Ionic que se usan en el HTML
-import { GalleryItem } from '../../services/gallery'; // Importa el modelo que define la estructura de los items
+import { GalleryItem } from '../../services/gallery.service'; // Importa el modelo que define la estructura de los items
 
 @Component({
   selector: 'app-gallery-detail', // Nombre del componente para usarlo en el HTML

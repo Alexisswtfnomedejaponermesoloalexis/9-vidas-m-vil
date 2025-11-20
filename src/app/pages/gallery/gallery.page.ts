@@ -12,7 +12,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton,
 import { Observable } from 'rxjs'; // Permite trabajar con flujos de datos asincrónicos
 
 // Importa el servicio que maneja los datos de la galería y el tipo de dato de cada elemento
-import { GalleryService, GalleryItem } from '../../services/gallery';
+import { GalleryService, GalleryItem } from '../../services/gallery.service';
 
 // Importa el componente que muestra los detalles de un elemento en un modal
 import { GalleryDetailComponent } from '../../components/gallery-detail/gallery-detail.component';
