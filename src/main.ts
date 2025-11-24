@@ -17,6 +17,7 @@ import { environment } from './environments/environment';
 // Importa funciones necesarias para inicializar Firebase y Firestore
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getDatabase, provideDatabase } from '@angular/fire/database';
 
 
 // Si la app está en modo producción, se activan optimizaciones de Angular
@@ -43,5 +44,6 @@ bootstrapApplication(AppComponent, {
 
     // Proporciona el servicio de base de datos Firestore a toda la aplicación
     provideFirestore(() => getFirestore()),
+    provideDatabase(() => getDatabase()),
   ],
 });

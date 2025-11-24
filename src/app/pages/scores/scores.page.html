@@ -1,51 +1,43 @@
-<!-- 
-  Esta página muestra una tabla con los "Marcadores" del juego "9 Vidas".
-  Presenta una lista de jugadores con su rango, nombre, puntaje y tiempo.
-  Además, incluye una barra superior con el título y un botón de menú lateral.
--->
-
-<!-- Página que muestra la tabla de marcadores del juego -->
-
-<ion-header [translucent]="true"> <!-- Encabezado semitransparente -->
-  <ion-toolbar color="primary"> <!-- Barra superior con color principal -->
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button> <!-- Botón para abrir el menú lateral -->
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Marcadores</ion-title> <!-- Título del encabezado -->
+    <ion-title>Marcadores</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding"> 
-  <div class="scores-container">
-    <h1>SCORES <BR> 9 VIDAS</h1>
+<ion-content [fullscreen]="true" class="ion-padding">
 
+  <div class="scores-container">
+    <h1>MARCADORES DE LEYENDA (9 VIDAS)</h1>
+    
     <div class="table-wrapper">
       <div class="leaderboard-panel">
         <table>
           <thead>
             <tr>
               <th>RANK</th>
-              <th>NOMBRE</th>
-              <th>PUNTAJE</th>
-              <th>TIEMPO</th>
+              <th>USUARIO</th>
+              <th>SCORE</th>
+              <th>ENEMIGOS</th>
+              <th>NIVEL</th>
             </tr>
           </thead>
           <tbody>
-            <!-- Recorre la lista de marcadores y genera una fila por cada jugador -->
-            <!-- Aplica la clase 'top-rank' a los tres primeros lugares -->
-            <tr *ngFor="let score of scores" [ngClass]="{'top-rank': score.rank <= 3}">
-              <td class="rank-column">{{ score.rank }}</td> <!-- Muestra la posición -->
-              <td class="name-column">{{ score.name }}</td> <!-- Muestra el nombre del jugador -->
-              <td class="score-column">{{ score.score | number }}</td> <!-- Muestra el puntaje con formato numérico -->
-              <td class="time-column">{{ score.time }}</td> <!-- Muestra el tiempo del jugador -->
+            <tr *ngFor="let s of scores$ | async; let i = index" [ngClass]="{'top-rank': i < 3}">
+              <td class="rank-column">{{ i + 1 }}</td>
+              <td class="name-column">{{ s.usuario }}</td>
+              <td class="score-column">{{ s.score }}</td>
+              <td class="time-column">{{ s.enemigos }}</td>
+              <td class="time-column">{{ s.nivel }}</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-
-    <p class="data-source-note">
-      Datos de muestra. Próximamente: Conexión en tiempo real con la base de datos del juego.
-    </p>
+  
+    <p class="data-source-note">Datos en tiempo real desde Firebase Realtime Database.</p>
   </div>
+
 </ion-content>
