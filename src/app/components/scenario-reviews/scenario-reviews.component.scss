@@ -1,0 +1,31 @@
+/* Mismo fondo oscuro */
+ion-content { --background: #3b3b4a; }
+
+.review-card {
+  background-color: #2b2b3a;
+  border: 3px solid #ff9900;
+  margin-bottom: 15px;
+  padding: 10px;
+  box-shadow: 4px 4px 0px 0px #1a1a2a;
+}
+
+.stars {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+.comment {
+  font-family: 'VT323', monospace;
+  font-size: 1.4em;
+  color: #fff;
+  margin: 0;
+  font-style: italic;
+}
+
+.no-reviews {
+  text-align: center;
+  color: #ccc;
+  font-family: 'VT323', monospace;
+  font-size: 1.5em;
+  margin-top: 20px;
+}

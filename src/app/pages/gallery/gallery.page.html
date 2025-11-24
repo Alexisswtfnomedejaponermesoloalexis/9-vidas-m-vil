@@ -1,40 +1,72 @@
-<!---- Este código muestra la galería principal con tarjetas de items. 
-Cada tarjeta contiene nombre, imagen e información, 
-y permite abrir un modal con más detalles del item. ---->
-
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button> <!---- Abre el menú lateral ---->
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Lore & Galería</ion-title> <!---- Título de la página ---->
+    <ion-title>Lore & Galería</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <div class="gallery-container">
-    <h1>| Gallery |  <br>| 9 VIDAS  |</h1>
+  
+  <div class="gallery-container" *ngIf="!selectedCategory">
+    <h1> Categorías  <br>9 VIDAS </h1>
 
     <div class="cards-grid">
-      <!---- Recorre los elementos del observable galleryItems$ y crea una tarjeta por cada uno ---->
-      <div *ngFor="let item of galleryItems$ | async" class="pixel-card">
-        
-        <div class="card-header">
-          {{ item.nombre | uppercase }} <!---- Muestra el nombre en mayúsculas ---->
-        </div>
-        
-        <img [src]="item.imagen" [alt]="item.nombre" class="card-image"> <!---- Imagen del item ---->
-
-        <div class="card-content">
-          <h2>{{ item.nombre }}</h2>
-          <p>{{ item.info }}</p> <!---- Breve descripción del item ---->
-        </div>
-
-        <div class="card-footer">
-          <!---- Abre un modal con la información detallada del item ---->
-          <button class="pixel-button" (click)="openDetailModal(item)">Ver Detalles</button>
-        </div>
+      <div class="pixel-card category-card" (click)="selectCategory('Protagonista')">
+        <div class="card-header" style="background-color: #D97D55;">PROTAGONISTA</div>
+        <div class="card-content"><p>Conoce al héroe.</p></div>
+      </div>
+      <div class="pixel-card category-card" (click)="selectCategory('Enemigo')">
+        <div class="card-header" style="background-color: #c70000;">ENEMIGOS</div>
+        <div class="card-content"><p>Bestias y criaturas.</p></div>
+      </div>
+      <div class="pixel-card category-card" (click)="selectCategory('Escenario')">
+        <div class="card-header" style="background-color: #009900;">ESCENARIOS</div>
+        <div class="card-content"><p>Los lugares.</p></div>
       </div>
     </div>
   </div>
+
+
+  <div class="gallery-container" *ngIf="selectedCategory">
+    
+    <button class="pixel-button back-button" (click)="resetCategory()">
+      < Volver a Categorías
+    </button>
+
+    <h1> {{ selectedCategory }} </h1>
+
+    <div class="cards-grid">
+      <ng-container *ngFor="let item of galleryItems$ | async">
+        
+        <div *ngIf="item.category === selectedCategory" class="pixel-card">
+          
+          <div class="card-header">
+            {{ item.nombre | uppercase }}
+          </div>
+          
+          <img [src]="'assets/galeria/' + item.imagen" [alt]="item.nombre" class="card-image">
+
+          <div class="card-content">
+            <h2>{{ item.nombre }}</h2>
+            <p>{{ item.info }}</p>
+          </div>
+
+          <div class="card-footer">
+            <button class="pixel-button" (click)="openDetailModal(item)">Ver Detalles</button>
+            
+            <button *ngIf="item.category === 'Escenario'" 
+                    class="pixel-button review-btn" 
+                    (click)="openReviewsModal(item)"
+                    style="margin-top: 10px; background-color: #F4E9D7;">
+              Ver Reseñas
+            </button>
+          </div>
+        </div>
+
+      </ng-container>
+    </div>
+  </div>
+
 </ion-content>

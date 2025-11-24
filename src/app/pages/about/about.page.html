@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Nosotros</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <div class="about-container">
+    <h1>ISHHHH STUDIOS  <br> TEAM </h1>
+
+    <div class="cards-grid">
+      
+      <div *ngFor="let member of teamMembers" class="pixel-card member-card">
+        
+        <div class="card-header">
+          {{ member.role | uppercase }}
+        </div>
+        
+        <img [src]="member.image" [alt]="member.name" class="card-image member-image">
+
+        <div class="card-content">
+          <h2>{{ member.name }}</h2>
+          <p>{{ member.description }}</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</ion-content>

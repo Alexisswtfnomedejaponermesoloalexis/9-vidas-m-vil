@@ -28,10 +28,11 @@ export class AppComponent {
 
   // Lista de páginas que se muestran en el menú lateral
   public appPages = [
-    { title: 'Lore & Galería', url: '/gallery', icon: 'images' },
-    { title: 'Scores', url: '/scores', icon: 'trophy' },
-    { title: 'Ratings', url: '/ratings', icon: 'star' },
-    { title: 'Soporte/Contacto', url: '/contact', icon: 'send' },
+    { title: 'Galería', url: '/gallery', icon: 'images' },
+    { title: 'Puntajes', url: '/scores', icon: 'trophy' },
+    { title: 'Calificaciones', url: '/ratings', icon: 'star' },
+    { title: 'Soporte', url: '/contact', icon: 'send' },
+    { title: 'Nosotros', url: '/about', icon: 'people' },
   ];
 
   constructor() {

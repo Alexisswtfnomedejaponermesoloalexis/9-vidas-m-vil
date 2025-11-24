@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Reseñas: {{ scenarioName }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  
+  <div class="reviews-container">
+    <div *ngFor="let review of ratings$ | async" class="pixel-panel review-card">
+      <div class="stars">
+        <span *ngFor="let s of getStarsArray(review.rating)" style="color: #ffc72c;">★</span>
+      </div>
+      <p class="comment">"{{ review.comment }}"</p>
+    </div>
+
+    <div *ngIf="(ratings$ | async)?.length === 0" class="no-reviews">
+      <p>Aún no hay reseñas para este escenario.</p>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center;">
+      <button class="pixel-button" (click)="closeModal()" style="width: 100%; background-color: #F4E9D7;">
+        VOLVER A ESCENARIOS
+      </button>
+    </div>
+  </div>
+
+</ion-content>

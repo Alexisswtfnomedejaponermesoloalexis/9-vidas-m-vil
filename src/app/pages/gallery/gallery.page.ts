@@ -16,6 +16,7 @@ import { GalleryService, GalleryItem } from '../../services/gallery.service';
 
 // Importa el componente que muestra los detalles de un elemento en un modal
 import { GalleryDetailComponent } from '../../components/gallery-detail/gallery-detail.component';
+import { ScenarioReviewsComponent } from '../../components/scenario-reviews/scenario-reviews.component';
 
 @Component({
   selector: 'app-gallery', // Nombre con el que se identifica el componente en el HTML
@@ -37,6 +38,7 @@ export class GalleryPage implements OnInit { // Define la clase principal de la 
 
   // Declara una variable que contendrá los elementos de la galería como un flujo de datos (Observable)
   public galleryItems$!: Observable<GalleryItem[]>;
+  selectedCategory: string | null = null;
 
   // Constructor: inyecta el servicio de galería y el controlador de modales
   constructor(private galleryService: GalleryService, private modalCtrl: ModalController) { }
@@ -45,6 +47,14 @@ export class GalleryPage implements OnInit { // Define la clase principal de la 
   ngOnInit() {
     // Llama al servicio para obtener los elementos de la galería y los guarda en la variable
     this.galleryItems$ = this.galleryService.getGalleryItems();
+  }
+  selectCategory(category: string) {
+    this.selectedCategory = category;
+  }
+
+  // NUEVO: Función para volver al menú principal
+  resetCategory() {
+    this.selectedCategory = null;
   }
 
   // Método asincrónico para abrir un modal con los detalles de un elemento seleccionado
@@ -59,6 +69,16 @@ export class GalleryPage implements OnInit { // Define la clase principal de la 
     });
     
     // Muestra el modal en pantalla
+    await modal.present();
+  }
+  async openReviewsModal(item: GalleryItem) {
+    const modal = await this.modalCtrl.create({
+      component: ScenarioReviewsComponent,
+      componentProps: {
+        scenarioName: item.nombre // Le pasamos el nombre para que busque
+      },
+      cssClass: 'pixel-modal'
+    });
     await modal.present();
   }
 

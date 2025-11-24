@@ -1,0 +1,66 @@
+/* Reutilizamos la estructura de la galería */
+.about-container {
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+h1 {
+  color: #ff9900;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* Estilo específico para la tarjeta de miembro */
+.member-card {
+  background-color: #2b2b3a;
+  border: 5px solid #ff9900;
+  box-shadow: 8px 8px 0px 0px #1a1a2a;
+  
+  /* Efecto al pasar el mouse (opcional) */
+  transition: transform 0.2s;
+}
+
+.member-card:active {
+  transform: translateY(4px);
+  box-shadow: 4px 4px 0px 0px #1a1a2a;
+}
+
+/* Ajuste de la imagen del miembro */
+.member-image {
+  width: 100%;
+  height: 250px; /* Un poco más alto para retratos */
+  object-fit: cover; 
+  image-rendering: pixelated;
+  border-bottom: 4px solid #ff9900;
+}
+
+/* Ajustes de texto */
+.card-content h2 {
+  font-family: 'Press Start 2P', monospace;
+  color: #fff;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.card-content p {
+  font-family: 'VT323', monospace;
+  font-size: 1.4em;
+  color: #ccc;
+  line-height: 1.2;
+}
+
+.card-header {
+  background-color: #ff9900;
+  color: #1a1a2a;
+  padding: 10px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.8em;
+}
