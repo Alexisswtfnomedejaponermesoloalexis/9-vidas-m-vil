@@ -16,7 +16,7 @@ export class AboutPage implements OnInit {
     {
       name: ' ISHHHH STUDIOS',  
       role: '¿Quienes somos?',
-      description: 'Somos un equipo con un solo propósito, pasar xd',
+      description: 'Somos un equipo con un solo propósito, cumplir siempre con el objetivo',
       image: 'assets/galeria/logo.jpeg' 
     },
     {
@@ -27,9 +27,9 @@ export class AboutPage implements OnInit {
     },
     {
       name: 'Compañero 3',
-      role: 'Desarrollador Unity',
-      description: 'Programación de mecánicas y enemigos.',
-      image: 'assets/galeria/cat-pixel.png'
+      role: 'NOSOTROS',
+      description: 'Estos somos nosotros, somos unos desarrolladores de software en proceso.',
+      image: 'assets/galeria/us2.jpeg'
     }
   ];
 
