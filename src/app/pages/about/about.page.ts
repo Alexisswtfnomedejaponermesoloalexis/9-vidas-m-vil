@@ -26,7 +26,7 @@ export class AboutPage implements OnInit {
       image: 'assets/galeria/9vidas.jpeg' 
     },
     {
-      name: 'Compañero 3',
+      name: '9 VIDAS TEAM',
       role: 'NOSOTROS',
       description: 'Estos somos nosotros, somos unos desarrolladores de software en proceso.',
       image: 'assets/galeria/us2.jpeg'
