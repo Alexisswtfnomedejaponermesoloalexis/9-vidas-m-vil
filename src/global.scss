@@ -1,5 +1,12 @@
+/* GLOBAL.SCSS - 9 VIDAS APP
+  Estilos globales, fuentes y correcciones de accesibilidad.
+*/
+
+/* 1. Imports de Ionic y Fuentes */
 @import "@ionic/angular/css/core.css";
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+/* Ionic Basics */
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
@@ -11,34 +18,49 @@
 @import "@ionic/angular/css/flex-utils.css";
 @import '@ionic/angular/css/palettes/dark.system.css';
 
+/* 2. Reset Básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* 3. Estilos del Body (Fondo y Fuente Base) */
 body {
   font-family: 'VT323', Courier, monospace;
   font-smooth: never;
   -webkit-font-smoothing: none;
   background-color: #3b3b4a;
-  color: #fff;
+  color: #ffffff; /* BLANCO PURO para máximo contraste */
   padding-top: 60px;
 }
 
+/* Contenedor general */
 .content-area {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
+/* 4. Tipografía Pixel Art (Títulos) */
+h1, h2, h3, h4, h5, h6,
+ion-title,
+.pixel-button,
+.leaderboard-panel th,
+ion-menu ion-list-header,
+.card-header {
+  font-family: 'Press Start 2P', monospace;
+  letter-spacing: 0px;
+}
+
+/* 5. Botones (Estilo Pixel) */
 button, .pixel-button {
-  background-color: #F4E9D7;
-  color: #D97D55;
+  background-color: #F4E9D7; /* Beige */
+  color: #D97D55;            /* Óxido */
   border: 4px solid #1a1a2a;
   padding: 10px 20px;
   cursor: pointer;
-  font-family: inherit;
+  font-family: 'Press Start 2P', monospace; /* Aseguramos la fuente */
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -50,6 +72,7 @@ button:hover, .pixel-button:hover {
   border-color: #000;
 }
 
+/* 6. Personalización del Menú Lateral (Ionic) */
 ion-menu::part(container) {
   background-color: #1a1a2a !important;
   border-right: 4px solid #ff9900;
@@ -62,41 +85,32 @@ ion-menu ion-list-header {
 }
 
 ion-menu ion-note {
-  color: #ccc;
+  color: #ffffff !important; /* Blanco para contraste */
   padding-left: 16px;
   display: block;
   margin-bottom: 20px;
 }
 
 ion-menu ion-label {
-  color: #fff !important;
+  color: #ffffff !important;
   font-family: 'Courier New', Courier, monospace !important;
   font-weight: bold;
 }
 
 ion-menu ion-icon {
-  color: #fff !important;
+  color: #ffffff !important;
 }
 
 ion-menu ion-item.selected {
-  --background: #D97D55;
+  --background: #D97D55; /* Color Óxido al seleccionar */
 }
 
 ion-menu ion-item.selected ion-label,
 ion-menu ion-item.selected ion-icon {
-  color: #1a1a2a !important;
+  color: #1a1a2a !important; /* Texto oscuro sobre fondo óxido */
 }
 
-.table-wrapper {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.table-wrapper .leaderboard-panel {
-  min-width: 500px;
-}
-
+/* Header personalizado del menú */
 .menu-header-container {
   display: flex;
   justify-content: space-between;
@@ -131,29 +145,50 @@ ion-menu ion-item.selected ion-icon {
   font-size: 0.9em;
 }
 
+/* Ocultar headers por defecto de Ionic */
 #inbox-list ion-list-header,
 #inbox-list ion-note {
   display: none;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-ion-title,
-.pixel-button,
-.card-header,
-.leaderboard-panel th,
-ion-menu ion-list-header {
-  font-family: 'Press Start 2P', monospace;
-  letter-spacing: 0px;
+/* 7. Tablas Responsive (Scroll horizontal) */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-.pixel-card .card-content p {
+.table-wrapper .leaderboard-panel {
+  min-width: 500px;
+}
+
+/* 8. CORRECCIONES DE ACCESIBILIDAD (LIGHTHOUSE 100) */
+
+/* A) Textos de descripción: BLANCO PURO */
+p, 
+.card-content p, 
+.intro-text {
   font-family: 'VT323', Courier, monospace !important;
   font-size: 1.6em;
   line-height: 1.4;
-  color: #ccc;
+  color: #ffffff !important; /* Fix contraste */
+}
+
+/* B) Encabezados de tarjetas: NEGRO */
+/* Esto es vital para pasar la prueba sobre fondos de color (naranja/rojo/verde) */
+.card-header, 
+.category-card .card-header {
+  color: #000000 !important; 
+  font-weight: 900; 
+}
+
+/* C) Inputs de Formulario: ALTO CONTRASTE */
+/* Fondo blanco y letras negras. Esto elimina cualquier duda de contraste. */
+input, textarea, select {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #ff9900;
+  /* Aseguramos la fuente correcta también */
+  font-family: 'VT323', Courier, monospace !important;
+  font-size: 1.2em;
 }
