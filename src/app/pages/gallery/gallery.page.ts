@@ -17,6 +17,7 @@ import { GalleryService, GalleryItem } from '../../services/gallery.service';
 // Importa el componente que muestra los detalles de un elemento en un modal
 import { GalleryDetailComponent } from '../../components/gallery-detail/gallery-detail.component';
 import { ScenarioReviewsComponent } from '../../components/scenario-reviews/scenario-reviews.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-gallery', 
@@ -41,12 +42,18 @@ export class GalleryPage implements OnInit { // Define la clase principal de la 
   selectedCategory: string | null = null;
 
   // Constructor: inyecta el servicio de galería y el controlador de modales
-  constructor(private galleryService: GalleryService, private modalCtrl: ModalController) { }
+  constructor(private galleryService: GalleryService, private modalCtrl: ModalController, private route: ActivatedRoute) { }
 
   // Método que se ejecuta al iniciar la página
   ngOnInit() {
     // Llama al servicio para obtener los elementos de la galería y los guarda en la variable
     this.galleryItems$ = this.galleryService.getGalleryItems();
+    //Redirección automática del usuario al llenar el formulario de calificaciones
+    this.route.queryParams.subscribe(params => {
+      if (params['category']) {
+        this.selectCategory(params['category']);
+      }
+    });
   }
   selectCategory(category: string) {
     this.selectedCategory = category;

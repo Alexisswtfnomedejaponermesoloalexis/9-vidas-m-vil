@@ -5,6 +5,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton,
 
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { GalleryService, GalleryItem } from '../../services/gallery.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ratings',
@@ -25,6 +26,7 @@ export class RatingsPage implements OnInit {
   hoverRating: number = 0;
   
   constructor(
+    private router: Router,
     private fb: FormBuilder,
     private firestore: Firestore,
     private galleryService: GalleryService 
@@ -86,8 +88,13 @@ export class RatingsPage implements OnInit {
       const ratingsCollection = collection(this.firestore, 'ratings');
       await addDoc(ratingsCollection, ratingData);
 
-      alert('¡Gracias por tu calificación!');
+      alert('¡Gracias por calificarnos! Redireccionando a escenarios...');
+      
       this.resetForm(); 
+
+      this.router.navigate(['/gallery'], { 
+        queryParams: { category: 'Escenario' } 
+      });
 
     } catch (e) {
       console.error('Error:', e);
