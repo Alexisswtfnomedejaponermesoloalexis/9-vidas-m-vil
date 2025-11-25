@@ -8,6 +8,9 @@
   
   <div class="reviews-container">
     <div *ngFor="let review of ratings$ | async" class="pixel-panel review-card">
+      <h3 style="color: #ff9900; margin: 0 0 5px 0; font-family: 'Press Start 2P'; font-size: 0.9em;">
+    {{ review.nickname }}
+  </h3>
       <div class="stars">
         <span *ngFor="let s of getStarsArray(review.rating)" style="color: #ffc72c;">★</span>
       </div>

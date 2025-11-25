@@ -15,6 +15,15 @@
     <div class="pixel-panel form-panel">
       
       <form [formGroup]="ratingForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+    <label for="nickname">Tu Nickname</label>
+    <input type="text" id="nickname" formControlName="nickname" placeholder="Ej: Mishi Slayer" 
+           style="background-color: #1a1a2a; color: white; width: 100%; padding: 10px; border: 2px solid #ff9900;">
+    
+    <div *ngIf="ratingForm.get('nickname')?.invalid && ratingForm.get('nickname')?.touched" class="error-message">
+      El nickname es obligatorio.
+    </div>
+  </div>
 
         <div class="form-group">
           <label for="scenario">Escenario y Dificultad</label>

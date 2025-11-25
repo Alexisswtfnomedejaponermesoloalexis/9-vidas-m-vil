@@ -36,6 +36,7 @@ export class RatingsPage implements OnInit {
     });
 
     this.ratingForm = this.fb.group({
+      nickname: ['', [Validators.required, Validators.minLength(3)]],
       scenario: [null, Validators.required],
       rating: [null, Validators.required], 
       comment: ['', [Validators.required, Validators.minLength(10)]]
@@ -74,6 +75,7 @@ export class RatingsPage implements OnInit {
     const scenarioObject = this.ratingForm.value.scenario;
 
     const ratingData = {
+      nickname: this.ratingForm.value.nickname,
       scenario: scenarioObject.nombre, 
       rating: this.ratingForm.value.rating,
       comment: this.ratingForm.value.comment,
@@ -95,6 +97,7 @@ export class RatingsPage implements OnInit {
 
   private resetForm() {
     this.ratingForm.reset({ 
+      nickname: '',
       scenario: null, 
       rating: null, 
       comment: ''

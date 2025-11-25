@@ -11,6 +11,7 @@ export interface GalleryItem {
   category: string; 
 }
 export interface Rating {
+  nickname?: string;
   scenario: string;
   rating: number;
   comment: string;

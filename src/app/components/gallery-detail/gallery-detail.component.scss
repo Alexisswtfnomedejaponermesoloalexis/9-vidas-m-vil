@@ -1,12 +1,37 @@
 ion-content {
   --background: #3b3b4a;
 }
-
+ion-title {
+  text-align: center; 
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1em; 
+  padding-right: 40px;
+}
 .modal-panel {
   background-color: #2b2b3a;
   border: 5px solid #ff9900;
   box-shadow: 8px 8px 0px 0px #1a1a2a;
   margin-top: 10px; 
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-image {
+  width: 100%;
+  max-width: 250px; 
+  height: auto;
+  object-fit: contain;
+  image-rendering: pixelated;
+  margin-bottom: 20px;
+  
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.card-content {
+  width: 100%;
+  text-align: center; 
 }
 
 
@@ -20,14 +45,17 @@ ion-content {
 
 h2 {
   font-family: 'Press Start 2P', monospace;
-  font-size: 1.2em; 
+  color: #fff;
+  margin-bottom: 15px;
+  text-align: center; 
 }
 
 p {
-  font-family: 'VT323', Courier, monospace !important; 
-  font-size: 1.6em; 
+  font-family: 'VT323', monospace;
+  font-size: 1.4em;
   line-height: 1.4;
   color: #ccc;
+  text-align: justify; 
 }
 
 .pixel-button {
