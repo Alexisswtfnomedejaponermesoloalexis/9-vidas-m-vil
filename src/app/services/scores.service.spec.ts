@@ -1,12 +1,16 @@
 import { TestBed } from '@angular/core/testing';
-
 import { Scores } from './scores.service';
+import { Database } from '@angular/fire/database'; 
 
 describe('Scores', () => {
   let service: Scores;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [
+        { provide: Database, useValue: {} } 
+      ]
+    });
     service = TestBed.inject(Scores);
   });
 
