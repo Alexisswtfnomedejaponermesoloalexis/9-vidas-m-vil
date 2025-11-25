@@ -20,29 +20,21 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 
 
-// Si la app está en modo producción, se activan optimizaciones de Angular
-// Esto elimina mensajes de depuración y mejora el rendimiento
 if (environment.production) {
   enableProdMode();
 }
 
 
-// Inicia (bootstrap) la aplicación con el componente raíz "AppComponent"
 bootstrapApplication(AppComponent, {
   providers: [
-    // Define cómo se manejarán las rutas en Ionic (para optimizar la navegación)
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
 
-    // Inicializa las funciones base de Ionic (componentes, navegación, etc.)
     provideIonicAngular(),
 
-    // Proporciona las rutas definidas en app.routes.ts
     provideRouter(routes),
 
-    // Inicializa Firebase con la configuración del archivo environment.ts
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
 
-    // Proporciona el servicio de base de datos Firestore a toda la aplicación
     provideFirestore(() => getFirestore()),
     provideDatabase(() => getDatabase()),
   ],

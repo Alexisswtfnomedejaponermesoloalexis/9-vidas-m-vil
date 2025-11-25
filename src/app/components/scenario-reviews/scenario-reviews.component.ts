@@ -14,7 +14,7 @@ import { GalleryService, Rating } from '../../services/gallery.service';
 })
 export class ScenarioReviewsComponent implements OnInit {
 
-  @Input() scenarioName!: string; // Recibimos el nombre del escenario
+  @Input() scenarioName!: string; 
   ratings$!: Observable<Rating[]>;
 
   constructor(
@@ -23,7 +23,7 @@ export class ScenarioReviewsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // Pedimos a Firebase las reseñas de ESTE escenario
+  
     this.ratings$ = this.galleryService.getRatingsByScenario(this.scenarioName);
   }
 
@@ -31,7 +31,6 @@ export class ScenarioReviewsComponent implements OnInit {
     this.modalCtrl.dismiss();
   }
 
-  // Ayuda visual para pintar las estrellas
   getStarsArray(rating: number): number[] {
     return Array(rating).fill(0);
   }

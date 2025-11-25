@@ -1,45 +1,35 @@
-<!---->
-<!--ESTRUCTURA DE LA CREACIÓN DEL PROYECTO-->
-<!-- Estructura principal de la aplicación Ionic -->
 <ion-app>
-  <ion-split-pane contentId="main-content"> <!-- Permite tener menú lateral y contenido principal -->
+  <ion-split-pane contentId="main-content"> 
 
-    <!-- Menú lateral -->
-    <ion-menu contentId="main-content" type="overlay"> <!-- type="overlay" hace que el menú se superponga al contenido -->
+
+    <ion-menu contentId="main-content" type="overlay"> 
       <ion-content>
         
-        <div class="menu-header-container"> <!-- Contenedor del encabezado del menú -->
+        <div class="menu-header-container"> 
           
           <div class="header-text">
-            <ion-list-header>9 VIDAS</ion-list-header> <!-- Título del menú -->
-            <ion-note>ISHHHH STUDIOS</ion-note> <!-- Subtítulo o descripción del proyecto -->
+            <ion-list-header>9 VIDAS</ion-list-header> 
+            <ion-note>ISHHHH STUDIOS</ion-note> 
           </div>
           
-          <!-- Imagen del logo -->
           <img src="https://static.vecteezy.com/system/resources/previews/027/517/726/original/pixel-art-cartoon-ginger-cat-character-png.png" 
                alt="Logo Gato" class="menu-logo">
         
         </div>
 
         <ion-list id="inbox-list">
-          <!-- 
-            Bucle que recorre la lista de páginas del menú (appPages)
-            Usa la nueva sintaxis @for de Angular para iterar.
-            Cada elemento genera una opción del menú que redirige a su URL correspondiente.
-          -->
+       
           @for (p of appPages; track p; let i = $index) {
-            <ion-menu-toggle auto-hide="false"> <!-- Evita que el menú se cierre automáticamente al seleccionar una opción -->
+            <ion-menu-toggle auto-hide="false"> 
               <ion-item 
                 routerDirection="root" 
                 [routerLink]="[p.url]"  
                 lines="none" 
                 detail="false" 
-                routerLinkActive="selected"> <!-- Aplica la clase 'selected' si la ruta está activa -->
+                routerLinkActive="selected"> 
                 
-                <!-- Ícono dinámico: cambia entre versión iOS y Material Design -->
                 <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
 
-                <!-- Muestra el título de la página -->
                 <ion-label>{{ p.title }}</ion-label>
               </ion-item>
             </ion-menu-toggle>
@@ -49,7 +39,6 @@
       </ion-content>
     </ion-menu>
     
-    <!-- Contenedor donde se muestran las páginas según la ruta -->
     <ion-router-outlet id="main-content"></ion-router-outlet>
   
   </ion-split-pane>

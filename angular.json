@@ -28,13 +28,18 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "src/assets",
-                "output": "assets"
-              }
-            ],
+          "assets": [
+{
+"glob": "**/*",
+"input": "public"
+},
+{
+"glob": "**/*",
+"input": "src/assets",
+"output": "assets"
+},
+"src/robots.txt"  
+],
             "styles": ["src/global.scss", "src/theme/variables.scss"],
             "scripts": [],
             "browser": "src/main.ts"

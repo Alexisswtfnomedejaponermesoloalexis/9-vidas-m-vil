@@ -1,4 +1,3 @@
-/* Reutilizamos la estructura de la galería */
 .about-container {
   padding: 20px;
   text-align: center;
@@ -18,13 +17,11 @@ h1 {
   gap: 30px;
 }
 
-/* Estilo específico para la tarjeta de miembro */
 .member-card {
   background-color: #2b2b3a;
   border: 5px solid #ff9900;
   box-shadow: 8px 8px 0px 0px #1a1a2a;
   
-  /* Efecto al pasar el mouse (opcional) */
   transition: transform 0.2s;
 }
 
@@ -33,16 +30,14 @@ h1 {
   box-shadow: 4px 4px 0px 0px #1a1a2a;
 }
 
-/* Ajuste de la imagen del miembro */
 .member-image {
   width: 100%;
-  height: 250px; /* Un poco más alto para retratos */
+  height: 250px; 
   object-fit: cover; 
   image-rendering: pixelated;
   border-bottom: 4px solid #ff9900;
 }
 
-/* Ajustes de texto */
 .card-content h2 {
   font-family: 'Press Start 2P', monospace;
   color: #fff;

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton, IonSelect, IonSelectOption } from '@ionic/angular/standalone';
 
-// 1. Solo importamos Firestore (ya no necesitamos Storage ni Sanitizer)
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { GalleryService, GalleryItem } from '../../services/gallery.service';
 
@@ -18,11 +17,9 @@ export class RatingsPage implements OnInit {
 
   ratingForm!: FormGroup; 
   
-  // Listas para los escenarios desde Firebase
   scenariosList: GalleryItem[] = [];
   selectedScenario: GalleryItem | null = null;
 
-  // Lógica de calificación por estrellas
   maxStars: number = 5;
   currentRating: number = 0;
   hoverRating: number = 0;
@@ -34,12 +31,10 @@ export class RatingsPage implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // 1. Cargar los escenarios desde Firebase
     this.galleryService.getScenariosOnly().subscribe(res => {
       this.scenariosList = res;
     });
 
-    // 2. Formulario simplificado (Solo Texto y Estrellas)
     this.ratingForm = this.fb.group({
       scenario: [null, Validators.required],
       rating: [null, Validators.required], 
@@ -47,12 +42,10 @@ export class RatingsPage implements OnInit {
     });
   }
 
-  // --- DETECTAR CAMBIO DE ESCENARIO (Para la imagen) ---
   onScenarioChange(event: any) {
     this.selectedScenario = event.detail.value;
   }
 
-  // --- LÓGICA INTERACTIVA DE ESTRELLAS ---
   setRating(rating: number) {
     this.currentRating = rating;
     this.ratingForm.get('rating')?.setValue(rating);
@@ -71,7 +64,6 @@ export class RatingsPage implements OnInit {
     return star <= activeRating ? '#ffc72c' : '#4a4a58'; 
   }
   
-  // --- ENVÍO A FIREBASE ---
   async onSubmit() {
     if (!this.ratingForm.valid) {
       alert('Por favor, completa todos los campos.');
@@ -82,7 +74,7 @@ export class RatingsPage implements OnInit {
     const scenarioObject = this.ratingForm.value.scenario;
 
     const ratingData = {
-      scenario: scenarioObject.nombre, // Guardamos el nombre
+      scenario: scenarioObject.nombre, 
       rating: this.ratingForm.value.rating,
       comment: this.ratingForm.value.comment,
       timestamp: new Date()
@@ -101,7 +93,6 @@ export class RatingsPage implements OnInit {
     }
   }
 
-  // --- RESETEO LIMPIO ---
   private resetForm() {
     this.ratingForm.reset({ 
       scenario: null, 

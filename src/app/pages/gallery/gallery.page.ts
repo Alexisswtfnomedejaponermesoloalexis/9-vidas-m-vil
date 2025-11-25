@@ -19,11 +19,11 @@ import { GalleryDetailComponent } from '../../components/gallery-detail/gallery-
 import { ScenarioReviewsComponent } from '../../components/scenario-reviews/scenario-reviews.component';
 
 @Component({
-  selector: 'app-gallery', // Nombre con el que se identifica el componente en el HTML
-  templateUrl: './gallery.page.html', // Ruta del archivo HTML asociado a la página
-  styleUrls: ['./gallery.page.scss'], // Archivo con los estilos CSS o SCSS de la página
-  standalone: true, // Indica que este componente no depende de un módulo específico
-  imports: [ // Lista de módulos y componentes que este componente necesita
+  selector: 'app-gallery', 
+  templateUrl: './gallery.page.html',
+  styleUrls: ['./gallery.page.scss'], 
+  standalone: true, 
+  imports: [ 
     CommonModule, 
     IonContent, 
     IonHeader, 
@@ -31,7 +31,7 @@ import { ScenarioReviewsComponent } from '../../components/scenario-reviews/scen
     IonToolbar, 
     IonButtons, 
     IonMenuButton,
-    GalleryDetailComponent // Se incluye el componente del detalle de galería
+    GalleryDetailComponent 
   ]
 })
 export class GalleryPage implements OnInit { // Define la clase principal de la página de galería
@@ -52,7 +52,7 @@ export class GalleryPage implements OnInit { // Define la clase principal de la 
     this.selectedCategory = category;
   }
 
-  // NUEVO: Función para volver al menú principal
+  // Función para volver al menú principal
   resetCategory() {
     this.selectedCategory = null;
   }

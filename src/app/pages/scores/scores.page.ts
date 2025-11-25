@@ -18,11 +18,9 @@ export class ScoresPage implements OnInit {
   constructor(private scoresService: Scores) { }
 
   ngOnInit() {
-    // Obtenemos los puntajes del servicio
     this.scores$ = this.scoresService.getTopScores();
   }
 
-  // Función auxiliar para convertir los segundos a formato 00:00 (Opcional)
   formatTime(seconds: number): string {
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
