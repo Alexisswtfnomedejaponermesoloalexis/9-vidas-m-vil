@@ -7,11 +7,9 @@
 */
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton } from '@ionic/angular/standalone';
 // Importamos las herramientas para crear Formularios Reactivos
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 // 1. IMPORTA LAS HERRAMIENTAS DE FIRESTORE
 // 'Firestore' es el servicio principal, 'collection' nos ayuda a apuntar a una colección,
 // y 'addDoc' nos permite añadir un nuevo documento (el reporte) a esa colección.
