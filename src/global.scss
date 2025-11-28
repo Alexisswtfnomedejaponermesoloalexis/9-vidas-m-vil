@@ -172,3 +172,26 @@ input, textarea, select {
   font-family: 'VT323', Courier, monospace !important;
   font-size: 1.2em;
 }
+/* --- FIX BARRA DE ESTADO (STATUS BAR) --- */
+
+ion-header {
+  /* 1. Pinta todo el fondo del color primario (Naranja) */
+  background-color: var(--ion-color-primary);
+
+  /* 2. Empuja el contenido hacia abajo:
+      env(safe-area-inset-top) -> Es la altura automática de la barra de notificaciones del celular.
+      + 15px -> Es el espacio extra que pediste para que se vea más "amplio".
+  */
+  padding-top: calc(env(safe-area-inset-top) + 15px);
+  
+  /* Un poco de espacio abajo para que respire */
+  padding-bottom: 10px;
+}
+
+/* Ajuste para la barra de herramientas interna */
+ion-toolbar {
+  /* La hacemos transparente para que se vea el naranja del header de fondo */
+  --background: transparent;
+  /* Quitamos bordes extraños */
+  --border-width: 0;
+}

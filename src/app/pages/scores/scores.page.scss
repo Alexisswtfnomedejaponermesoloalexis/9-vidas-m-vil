@@ -1,78 +1,145 @@
-
 .scores-container {
-  padding: 20px;
-  text-align: center; 
+  padding: 10px;
+  text-align: center;
 }
 
 .scores-container h1 {
-  color: #D97D55;
+  color: #D97D55; /* Color Óxido */
   margin-bottom: 30px;
   padding-bottom: 10px;
-  text-align: center; 
+  text-align: center;
+  line-height: 1.5;
   text-transform: uppercase;
-  position: relative; 
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.5em;
+  position: relative;
 }
 
 .scores-container h1::after {
   content: '';
   display: block;
-  width: 30%; 
+  width: 50%;
   height: 4px;
   background-color: #D97D55;
-  margin: 0 auto; 
+  margin: 0 auto;
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0;
 }
 
-.leaderboard-panel {
-  display: inline-block; 
-  background-color: #2b2b3a; 
-  border: 4px solid #D97D55; 
-  box-shadow: 6px 6px 0px 0px #1a1a2a; 
-  padding: 10px;
-  margin-bottom: 20px; 
+/* --- ESTILO DE LAS TARJETAS --- */
+.scores-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio entre tarjetas */
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse; 
-  font-size: 1.1em;
+.score-card {
+  background-color: #2b2b3a;
+  border: 4px solid #D97D55; /* Borde por defecto */
+  box-shadow: 6px 6px 0px 0px #1a1a2a;
+  padding: 15px;
+  color: #fff;
+  text-align: left;
+  position: relative;
+}
+
+/* ESTILOS PARA EL TOP 3 (Dorado) */
+.score-card.top-rank {
+  border-color: #ffc72c; /* Borde dorado */
+}
+
+.score-card.top-rank .rank-badge {
+  color: #ffc72c;
+  border-color: #ffc72c;
+}
+
+.score-card.top-rank .score-value {
+  color: #ffc72c;
+  text-shadow: 2px 2px 0px #000;
+}
+
+/* Cabecera de la tarjeta */
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px dashed #4a4a58;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.rank-badge {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.2em;
+  border: 2px solid #fff;
+  padding: 5px 8px;
+  background-color: #1a1a2a;
+}
+
+.user-name {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+/* Cuerpo (Puntaje) */
+.card-main {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.card-main .label {
+  display: block;
+  font-family: 'VT323', monospace;
+  font-size: 1.2em;
+  color: #ccc;
+  margin-bottom: 5px;
+}
+
+.score-value {
+  display: block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.8em; /* Puntaje grande */
   color: #fff;
 }
 
-thead th {
-  background-color: #D97D55; 
-  color: #1a1a2a; 
-  padding: 12px 15px;
-  text-transform: uppercase;
-  border: 2px solid #1a1a2a; 
+/* Pie (Detalles) */
+.card-stats {
+  display: flex;
+  justify-content: space-around;
+  background-color: #1a1a2a;
+  padding: 10px;
+  border: 2px solid #4a4a58;
 }
 
-tbody tr {
-  border-bottom: 1px dashed #4a4a58; 
+.stat-item {
+  text-align: center;
 }
 
-tbody tr:last-child {
-  border-bottom: none;
+.stat-item .label {
+  display: block;
+  font-family: 'VT323', monospace;
+  font-size: 1.2em;
+  color: #D97D55;
+  margin-bottom: 2px;
 }
 
-tbody td {
-  padding: 10px 15px;
-}
-
-.top-rank {
-  color: #ffc72c; 
-  font-weight: bold;
-}
-
-.rank-column {
-  width: 50px;
+.stat-item .value {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.9em;
+  color: #fff;
 }
 
 .data-source-note {
-  margin-top: 0; 
-  font-size: 0.8em;
-  color: #ccc;
+  margin-top: 20px;
+  font-family: 'VT323', monospace;
+  font-size: 1em;
+  color: #666;
 }

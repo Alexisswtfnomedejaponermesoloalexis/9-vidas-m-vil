@@ -59,3 +59,19 @@ h1 {
   font-family: 'Press Start 2P', monospace;
   font-size: 0.8em;
 }
+
+
+
+
+.poster-image {
+  height: 500px !important;
+  
+  
+  object-position: top; 
+}
+
+.poster-card {
+  grid-column: 1 / -1; 
+  max-width: 600px;   
+  margin: 0 auto;      
+}

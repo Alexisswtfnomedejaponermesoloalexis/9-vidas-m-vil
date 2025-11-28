@@ -14,23 +14,25 @@ export class AboutPage implements OnInit {
 
   teamMembers = [
     {
+      name: 'DREAM TEAM',
+      role: 'THE DREAM TEAM',
+      description: 'Desarrolladores en proceso, puro XP compa viejon yiiiiiiiiiiijaaaaa!',
+      image: 'assets/galeria/dreamteam.jpeg'
+    },
+    {
       name: ' ISHHHH STUDIOS',  
       role: '¿Quienes somos?',
       description: 'Somos un equipo con un solo propósito, cumplir siempre con el objetivo',
-      image: 'assets/galeria/logo.jpeg' 
+      image: 'assets/galeria/logotipoo.jpeg' 
     },
     {
       name: '9 VIDAS',
-      role: '¿Qué hacemos?',
-      description: 'Aquí buscamos crear algo en que divertirte y entretenerte, si buscas matar un rato el tiempo, aquí es el lugar que buscas',
-      image: 'assets/galeria/9vidas.jpeg' 
+      role: 'Esquema de Trabajo',
+      description: 'Proceso del proyecto realizado con Angular/Ionic/Unity/Firebase',
+      image: 'assets/galeria/poster.jpeg' 
     },
-    {
-      name: '9 VIDAS TEAM',
-      role: 'NOSOTROS',
-      description: 'Estos somos nosotros, somos unos desarrolladores de software en proceso.',
-      image: 'assets/galeria/us2.jpeg'
-    }
+    
+    
   ];
 
   constructor() { }
