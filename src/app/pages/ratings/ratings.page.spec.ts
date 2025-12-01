@@ -103,7 +103,7 @@ describe('RatingsPage', () => {
     // Verificamos que todo volvió a cero
     expect(component.currentRating).toBe(0);
     expect(component.selectedScenario).toBeNull();
-    expect(component.ratingForm.value.comment).toBe(null);
+    expect(component.ratingForm.value.comment).toBe('');
   });
 
 });
