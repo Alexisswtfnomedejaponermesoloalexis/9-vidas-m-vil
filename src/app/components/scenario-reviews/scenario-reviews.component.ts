@@ -14,23 +14,28 @@ import { GalleryService, Rating } from '../../services/gallery.service';
 })
 export class ScenarioReviewsComponent implements OnInit {
 
+  // Recibe el nombre del escenario desde el componente padre (Galería)
   @Input() scenarioName!: string; 
+  
+  // Observable que contendrá la lista de reseñas traídas de Firebase
   ratings$!: Observable<Rating[]>;
 
   constructor(
-    private modalCtrl: ModalController,
-    private galleryService: GalleryService
+    private modalCtrl: ModalController, // Controlador para cerrar el modal
+    private galleryService: GalleryService // Servicio para obtener los datos
   ) { }
 
   ngOnInit() {
-  
+    // Al iniciar, consulta al servicio las reseñas filtradas por este escenario
     this.ratings$ = this.galleryService.getRatingsByScenario(this.scenarioName);
   }
 
+  // Función para cerrar la ventana modal actual
   closeModal() {
     this.modalCtrl.dismiss();
   }
 
+  // Helper para generar un array numérico y poder iterar las estrellas en el HTML
   getStarsArray(rating: number): number[] {
     return Array(rating).fill(0);
   }
