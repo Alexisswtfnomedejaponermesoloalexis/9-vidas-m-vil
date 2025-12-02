@@ -21,7 +21,7 @@ import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 export class ContactPage implements OnInit {
 
   contactForm!: FormGroup;
-  isSubmitting: boolean = false; // Controla el estado de carga del botón (spinner/deshabilitado)
+  isSubmitting: boolean = false; // Controla el estado de carga del botón
 
   // Inyección de dependencias: Constructor de formularios y servicio de Base de Datos
   constructor(
